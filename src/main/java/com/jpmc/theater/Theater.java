@@ -3,13 +3,27 @@ package com.jpmc.theater;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Theater {
 
     LocalDateProvider provider;
     private List<Showing> schedule;
+  
+    LinkedList<LinkedHashMap<String, String>> jsonArr = new LinkedList<LinkedHashMap<String, String>>();
+    JSONObject mainObj = new JSONObject();
+    
+   
+
+   
 
     public Theater(LocalDateProvider provider) {
         this.provider = provider;
@@ -44,16 +58,31 @@ public class Theater {
     public void printSchedule() {
         System.out.println(provider.currentDate());
         System.out.println("===================================================");
+
         schedule.forEach(s ->
-                System.out.println(s.getSequenceOfTheDay() + ": " + s.getStartTime() + " " + s.getMovie().getTitle() + " " + humanReadableFormat(s.getMovie().getRunningTime()) + " $" + s.getMovieFee())
-        );
+       
+        {       System.out.println(s.getSequenceOfTheDay() + ": " + s.getStartTime() + " " + s.getMovie().getTitle() + " " + humanReadableFormat(s.getMovie().getRunningTime()) + " $" + s.getMovieFee());
+        LinkedHashMap<String, String> elements = new  LinkedHashMap<String, String>();;
+                elements.put("Sequence",String.valueOf( s.getSequenceOfTheDay()));
+                elements.put("Start Time", String.valueOf( s.getStartTime()));
+                elements.put("Title", s.getMovie().getTitle());
+                elements.put("Duration", humanReadableFormat(s.getMovie().getRunningTime()) );
+                elements.put("Fees",  " $" + s.getMovieFee());
+                jsonArr.add(elements);
+                });
+        mainObj.put("Reservations", jsonArr);	
         System.out.println("===================================================");
+        System.out.println(mainObj);
+        System.out.println(jsonArr);
+
+
+    
+
     }
 
     public String humanReadableFormat(Duration duration) {
         long hour = duration.toHours();
         long remainingMin = duration.toMinutes() - TimeUnit.HOURS.toMinutes(duration.toHours());
-
         return String.format("(%s hour%s %s minute%s)", hour, handlePlural(hour), remainingMin, handlePlural(remainingMin));
     }
 
