@@ -64,16 +64,16 @@ public class Theater {
         {       System.out.println(s.getSequenceOfTheDay() + ": " + s.getStartTime() + " " + s.getMovie().getTitle() + " " + humanReadableFormat(s.getMovie().getRunningTime()) + " $" + s.getMovieFee());
         LinkedHashMap<String, String> elements = new  LinkedHashMap<String, String>();;
                 elements.put("Sequence",String.valueOf( s.getSequenceOfTheDay()));
-                elements.put("Start Time", String.valueOf( s.getStartTime()));
+                elements.put("StartTime", String.valueOf( s.getStartTime()));
                 elements.put("Title", s.getMovie().getTitle());
                 elements.put("Duration", humanReadableFormat(s.getMovie().getRunningTime()) );
-                elements.put("Fees",  " $" + s.getMovieFee());
+                elements.put("Fees",  " $" + s.getMovieFees());
                 jsonArr.add(elements);
                 });
         mainObj.put("Reservations", jsonArr);	
         System.out.println("===================================================");
         System.out.println(mainObj);
-        System.out.println(jsonArr);
+        //System.out.println(jsonArr);
 
 
     

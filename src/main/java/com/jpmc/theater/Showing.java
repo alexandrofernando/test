@@ -2,16 +2,15 @@ package com.jpmc.theater;
 
 import java.time.LocalDateTime;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class Showing {
     private Movie movie;
     private int sequenceOfTheDay;
     private LocalDateTime showStartTime;
 
-    public Showing(Movie movie, int sequenceOfTheDay, LocalDateTime showStartTime) {
-        this.movie = movie;
-        this.sequenceOfTheDay = sequenceOfTheDay;
-        this.showStartTime = showStartTime;
-    }
+
 
     public Movie getMovie() {
         return movie;
@@ -27,6 +26,9 @@ public class Showing {
 
     public double getMovieFee() {
         return movie.getTicketPrice();
+    }
+    public double getMovieFees() {
+        return movie.calculateTicketPrice(this);
     }
 
     public int getSequenceOfTheDay() {
