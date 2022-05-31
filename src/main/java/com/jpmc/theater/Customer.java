@@ -10,11 +10,10 @@ import lombok.ToString;
 
 public class Customer {
 
-    private String name;
+	private String name;
 
-    private String id;
+	private String id;
 
-   // NOTE - id is not used anywhere at the moment
-
+	// NOTE - id is not used anywhere at the moment
 
 }
