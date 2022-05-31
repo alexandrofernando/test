@@ -26,7 +26,7 @@ public class Movie {
 
     private double getDiscount(int showSequence, LocalDateTime localDateTime) {
         double specialDiscount = 0;
-        System.out.println(localDateTime.getHour());
+     //   System.out.println(localDateTime.getHour());
         if (localDateTime.getHour()>11 && localDateTime.getHour()<=16 ) {
             specialDiscount = ticketPrice * 0.25;  // 25% discount for Any movies showing starting between 11AM ~ 4pm
         } else if(MOVIE_CODE_SPECIAL == specialCode) {

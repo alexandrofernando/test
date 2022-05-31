@@ -27,6 +27,7 @@ public class Showing {
     public double getMovieFee() {
         return movie.getTicketPrice();
     }
+    
     public double getMovieFees() {
         return movie.calculateTicketPrice(this);
     }
