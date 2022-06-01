@@ -63,7 +63,10 @@ public class Theater {
 
 			jsonArr.add(scheduleDisplay);
 		});
+
 		mainObj.put("Reservations", jsonArr);
+		System.out.println("===================================================");
+		System.out.println(jsonArr);
 		System.out.println("===================================================");
 		System.out.println(mainObj);
 		// System.out.println(jsonArr);
